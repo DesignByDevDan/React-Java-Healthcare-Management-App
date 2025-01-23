@@ -1,13 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Updated import path
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+// Locate the root element in the HTML
+const container = document.getElementById('root');
 
-ReactDOM.render(
+// Create a root using ReactDOM.createRoot
+const root = ReactDOM.createRoot(container);
+
+// Render the App component within React.StrictMode
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
