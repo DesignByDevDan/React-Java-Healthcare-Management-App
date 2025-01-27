@@ -12,17 +12,19 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      {/* Left Panel */}
-      <div className="login-left">
+      {/* Left Panel with Background Image */}
+      <div
+        className="login-left"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/login.jpg)`, // Reference the image in the public folder
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="branding">
           <h1>HealthCare</h1>
           <p>Your trusted healthcare management app</p>
         </div>
-        <img
-          src="https://via.placeholder.com/300x400" // Replace with actual image URL
-          alt="Healthcare professionals"
-          className="login-image"
-        />
       </div>
 
       {/* Right Panel */}
@@ -30,7 +32,7 @@ const Login = () => {
         <div className="login-form-container">
           <h2>Welcome back</h2>
           <p>
-            New to Healthi? <a href="/signup">Sign up</a>
+            New to HealthCare? <a href="/signup">Sign up</a>
           </p>
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
