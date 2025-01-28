@@ -22,7 +22,7 @@ const Login = () => {
         }}
       >
         <div className="branding">
-          <h1>HealthCare</h1>
+          <h1>MediConnect</h1>
           <p>Your trusted healthcare management app</p>
         </div>
       </div>
@@ -32,7 +32,7 @@ const Login = () => {
         <div className="login-form-container">
           <h2>Welcome back</h2>
           <p>
-            New to HealthCare? <a href="/signup">Sign up</a>
+            New to MediConnect? <a href="/signup">Sign up</a>
           </p>
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">

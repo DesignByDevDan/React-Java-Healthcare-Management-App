@@ -38,7 +38,7 @@ const Availability = () => {
     <div className="availability-page">
       {/* Sidebar */}
       <aside className="sidebar">
-        <h2>Healthi</h2>
+        <h2>MediConnect</h2>
         <ul>
           <li>Dashboard</li>
           <li>Calendar</li>

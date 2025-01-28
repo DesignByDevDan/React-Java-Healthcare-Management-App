@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Booking.css';
 
 const Booking = () => {
   const [tab, setTab] = useState('upcoming'); // Tabs: 'upcoming', 'past', 'cancelled'
+  const [months, setMonths] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState('');
 
   const bookings = {
     upcoming: [
@@ -17,11 +19,38 @@ const Booking = () => {
     ],
   };
 
+  useEffect(() => {
+    // Generate months dynamically based on current date
+    const now = new Date();
+    const currentMonthIndex = now.getMonth();
+    const year = now.getFullYear();
+
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December',
+    ];
+
+    const generatedMonths = [];
+    for (let i = currentMonthIndex; i < 12; i++) {
+      generatedMonths.push(`${monthNames[i]} ${year}`);
+    }
+    for (let i = 0; i < currentMonthIndex; i++) {
+      generatedMonths.push(`${monthNames[i]} ${year + 1}`);
+    }
+
+    setMonths(generatedMonths);
+    setSelectedMonth(generatedMonths[0]);
+  }, []);
+
+  const handleMonthChange = (e) => {
+    setSelectedMonth(e.target.value);
+  };
+
   return (
     <div className="booking-page">
       {/* Sidebar */}
       <aside className="sidebar">
-        <h2>Healthi</h2>
+        <h2>MediConnect</h2>
         <ul>
           <li>Dashboard</li>
           <li>Calendar</li>
@@ -37,9 +66,12 @@ const Booking = () => {
         <header className="booking-header">
           <h1>Booking</h1>
           <div className="filter-controls">
-            <select>
-              <option>May 2023</option>
-              <option>June 2023</option>
+            <select value={selectedMonth} onChange={handleMonthChange}>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
             </select>
             <button className="new-appointment-btn">+ New Appointment</button>
           </div>
@@ -69,25 +101,29 @@ const Booking = () => {
 
         {/* Booking List */}
         <div className="booking-list">
-          {bookings[tab].map((booking) => (
-            <div key={booking.id} className="booking-card">
-              <div className="booking-details">
-                <p>
-                  <strong>{booking.date}</strong> - {booking.time}
-                </p>
-                <p>
-                  <strong>Doctor:</strong> {booking.doctor}
-                </p>
-                <p>
-                  <strong>Issue:</strong> {booking.issue}
-                </p>
+          {bookings[tab].length > 0 ? (
+            bookings[tab].map((booking) => (
+              <div key={booking.id} className="booking-card">
+                <div className="booking-details">
+                  <p>
+                    <strong>{booking.date}</strong> - {booking.time}
+                  </p>
+                  <p>
+                    <strong>Doctor:</strong> {booking.doctor}
+                  </p>
+                  <p>
+                    <strong>Issue:</strong> {booking.issue}
+                  </p>
+                </div>
+                <div className="booking-actions">
+                  {booking.documents && <a href="#">View Documents</a>}
+                  <button className="edit-btn">Edit</button>
+                </div>
               </div>
-              <div className="booking-actions">
-                {booking.documents && <a href="#">View Documents</a>}
-                <button className="edit-btn">Edit</button>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No bookings available in this category.</p>
+          )}
         </div>
       </main>
     </div>

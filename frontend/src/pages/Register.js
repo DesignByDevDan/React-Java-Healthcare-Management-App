@@ -40,7 +40,7 @@ const Register = () => {
         <div className="register-form-container">
           <h2>Hey there</h2>
           <p>
-            Already know HealthCare? <a href="/login">Log in</a>
+            Already have an account with MediConnect? <a href="/login">Log in</a>
           </p>
           <form onSubmit={handleSubmit} className="register-form">
             <div className="form-group">
