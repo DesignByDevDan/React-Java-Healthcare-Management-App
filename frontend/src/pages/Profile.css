@@ -65,10 +65,17 @@
   }
   
   .user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50%; /* Ensure circular shape */
+    background-color: #f0f0f0; /* Fallback background color */
+    overflow: hidden; /* Hide overflow for images */
+    margin-right: 1rem; /* Add spacing between avatar and text */
   }
+  
   
   .general-info,
   .consultation-history {

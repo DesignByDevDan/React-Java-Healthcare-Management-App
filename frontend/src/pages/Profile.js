@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
+import Avatar from '@mui/material/Avatar';
+import { FaUserCircle } from 'react-icons/fa';
 import './Profile.css';
 
+// Import all profile section components
+import MedicalRecords from '../components/ProfileSections/MedicalRecords';
+import Appointments from '../components/ProfileSections/Appointments';
+import Notifications from '../components/ProfileSections/Notifications';
+import HealthTracker from '../components/ProfileSections/HealthTracker';
+import InsuranceInformation from '../components/ProfileSections/InsuranceInformation';
+import BillingPayments from '../components/ProfileSections/BillingPayments';
+import FamilyMembers from '../components/ProfileSections/FamilyMembers';
+import Prescriptions from '../components/ProfileSections/Prescriptions';
+import HealthTips from '../components/ProfileSections/HealthTips';
+import Teleconsultation from '../components/ProfileSections/Teleconsultation';
+import EmergencyContacts from '../components/ProfileSections/EmergencyContacts';
+import HelpSupport from '../components/ProfileSections/HelpSupport';
+import Feedback from '../components/ProfileSections/Feedback';
+
 const Profile = () => {
-  const [tab, setTab] = useState('general'); // 'general' or 'history'
+  const [tab, setTab] = useState('general'); // Default active tab
 
   const user = {
     name: 'Steven Doe',
@@ -12,6 +29,7 @@ const Profile = () => {
     phone: '+1 123-456-7890',
     email: 'steven.doe@example.com',
     preExistingDiseases: ['Diabetes', 'Hypertension'],
+    avatar: '', // Placeholder for avatar URL
     history: [
       {
         date: '2025-01-25',
@@ -40,6 +58,45 @@ const Profile = () => {
           <li className={tab === 'history' ? 'active' : ''} onClick={() => setTab('history')}>
             Consultation History
           </li>
+          <li className={tab === 'medical-records' ? 'active' : ''} onClick={() => setTab('medical-records')}>
+            Medical Records
+          </li>
+          <li className={tab === 'appointments' ? 'active' : ''} onClick={() => setTab('appointments')}>
+            Appointments
+          </li>
+          <li className={tab === 'notifications' ? 'active' : ''} onClick={() => setTab('notifications')}>
+            Notifications
+          </li>
+          <li className={tab === 'health-tracker' ? 'active' : ''} onClick={() => setTab('health-tracker')}>
+            Health Tracker
+          </li>
+          <li className={tab === 'insurance' ? 'active' : ''} onClick={() => setTab('insurance')}>
+            Insurance Information
+          </li>
+          <li className={tab === 'billing' ? 'active' : ''} onClick={() => setTab('billing')}>
+            Billing & Payments
+          </li>
+          <li className={tab === 'family' ? 'active' : ''} onClick={() => setTab('family')}>
+            Family Members
+          </li>
+          <li className={tab === 'prescriptions' ? 'active' : ''} onClick={() => setTab('prescriptions')}>
+            Prescriptions
+          </li>
+          <li className={tab === 'health-tips' ? 'active' : ''} onClick={() => setTab('health-tips')}>
+            Health Tips
+          </li>
+          <li className={tab === 'teleconsultation' ? 'active' : ''} onClick={() => setTab('teleconsultation')}>
+            Teleconsultation
+          </li>
+          <li className={tab === 'emergency' ? 'active' : ''} onClick={() => setTab('emergency')}>
+            Emergency Contacts
+          </li>
+          <li className={tab === 'help' ? 'active' : ''} onClick={() => setTab('help')}>
+            Help & Support
+          </li>
+          <li className={tab === 'feedback' ? 'active' : ''} onClick={() => setTab('feedback')}>
+            Feedback
+          </li>
           <li>Logout</li>
         </ul>
       </aside>
@@ -49,11 +106,18 @@ const Profile = () => {
         <header className="profile-header">
           <h1>Profile</h1>
           <div className="user-info">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="User"
-              className="user-avatar"
-            />
+            {/* Avatar with fallback */}
+            <div className="user-avatar">
+              {user.avatar ? (
+                <Avatar
+                  alt={user.name}
+                  src={user.avatar}
+                  style={{ width: 50, height: 50 }}
+                />
+              ) : (
+                <FaUserCircle size={50} color="#555" />
+              )}
+            </div>
             <div>
               <h2>{user.name}</h2>
               <p>{user.role}</p>
@@ -61,7 +125,7 @@ const Profile = () => {
           </div>
         </header>
 
-        {/* Tabs */}
+        {/* Tab Content */}
         {tab === 'general' && (
           <section className="general-info">
             <h2>My Profile</h2>
@@ -114,6 +178,20 @@ const Profile = () => {
             </ul>
           </section>
         )}
+
+        {tab === 'medical-records' && <MedicalRecords />}
+        {tab === 'appointments' && <Appointments />}
+        {tab === 'notifications' && <Notifications />}
+        {tab === 'health-tracker' && <HealthTracker />}
+        {tab === 'insurance' && <InsuranceInformation />}
+        {tab === 'billing' && <BillingPayments />}
+        {tab === 'family' && <FamilyMembers />}
+        {tab === 'prescriptions' && <Prescriptions />}
+        {tab === 'health-tips' && <HealthTips />}
+        {tab === 'teleconsultation' && <Teleconsultation />}
+        {tab === 'emergency' && <EmergencyContacts />}
+        {tab === 'help' && <HelpSupport />}
+        {tab === 'feedback' && <Feedback />}
       </main>
     </div>
   );
