@@ -22,25 +22,25 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      {/* Left Panel */}
-      <div className="register-left">
-        <div className="branding">
-          <h1>LOGO</h1>
-          <p>Your trusted healthcare management app</p>
-        </div>
-        <img
-          src="https://via.placeholder.com/300x400" // Replace with actual image URL
-          alt="Healthcare professionals"
-          className="register-image"
-        />
-      </div>
+      {/* Left Panel with Background Image */}
+      <div
+        className="register-left"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/login.jpg)`, // Reference the image in the public folder
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          position: 'relative', // Enable positioning for the branding
+        }}
+      >
+    </div>
+        
 
       {/* Right Panel */}
       <div className="register-right">
         <div className="register-form-container">
           <h2>Hey there</h2>
           <p>
-            Already know Healthi? <a href="/login">Log in</a>
+            Already know HealthCare? <a href="/login">Log in</a>
           </p>
           <form onSubmit={handleSubmit} className="register-form">
             <div className="form-group">
