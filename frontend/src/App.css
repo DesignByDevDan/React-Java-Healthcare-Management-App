@@ -1,5 +1,9 @@
+/* General App Styles */
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -22,17 +26,67 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
+.App-link:hover {
+  text-decoration: underline;
+}
+
+/* Keyframes */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+    padding: 15px;
+  }
+
+  .App-logo {
+    height: 30vmin;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    font-size: calc(6px + 2vmin);
+    padding: 10px;
+  }
+
+  .App-logo {
+    height: 20vmin;
+  }
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
   }
 }

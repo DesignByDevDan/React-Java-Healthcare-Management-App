@@ -50,7 +50,7 @@ const Booking = () => {
     <div className="booking-page">
       {/* Sidebar */}
       <aside className="sidebar">
-        <h2>MediConnect</h2>
+        <h2>Bookings</h2>
         <ul>
           <li>Dashboard</li>
           <li>Calendar</li>

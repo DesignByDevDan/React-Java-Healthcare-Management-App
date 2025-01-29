@@ -50,7 +50,7 @@ const Profile = () => {
     <div className="profile-container">
       {/* Sidebar */}
       <aside className="sidebar">
-        <h2>HealthCare</h2>
+        <h2>Profile</h2>
         <ul>
           <li className={tab === 'general' ? 'active' : ''} onClick={() => setTab('general')}>
             General
